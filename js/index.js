@@ -1,14 +1,43 @@
-document.addEventListener("DOMContentLoaded", function(){
-    document.getElementById("autos").addEventListener("click", function() {
-        localStorage.setItem("catID", 101);
-        window.location = "products.html"
-    });
-    document.getElementById("juguetes").addEventListener("click", function() {
-        localStorage.setItem("catID", 102);
-        window.location = "products.html"
-    });
-    document.getElementById("muebles").addEventListener("click", function() {
-        localStorage.setItem("catID", 103);
-        window.location = "products.html"
-    });
+function showAlertError() {
+    document.getElementById("alert-danger").classList.add("show");
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const formulario = document.getElementById('formulario');
+
+    formulario.addEventListener('submit', (evento) => {
+        evento.preventDefault();
+
+/*     const data_pass = new FormData(formulario);
+
+    let password1 = data_pass.get('contrasenia1');
+    let password2 = data_pass.get('contrasenia2');
+
+    if (password1 != password2) {
+        alert('Las contraseñas ingresadas no coinciden');
+    }
+ */
+    const inputs = formulario.querySelectorAll('input');
+
+    let vacio = false;
+
+    inputs.forEach((input) => {
+        if(input.value == '') {
+            vacio = true;
+        };
+    
+    if (vacio) {
+        showAlertError();
+        formulario.reset();
+    } else{
+        window.location="home.html"
+     
+    }
+
+    
+    
+    })
+
+    })
 });
+

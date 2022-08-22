@@ -22,7 +22,3 @@ document.addEventListener('DOMContentLoaded', async function(){
         `;
     });
 });
-
-/* function mostrar(auto){
-    console.log(auto.products)
-} */
