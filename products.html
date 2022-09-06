@@ -22,7 +22,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link" href="home.html">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
@@ -36,13 +36,33 @@
       </div>
     </div>
   </nav>
-  <main class="pb-5 container">
+  <!-- <main class="pb-5 container">
     <div class="container">
       <div class="alert alert-danger text-center" role="alert">
         <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
       </div>
     </div>
-  </main>
+  </main> -->
+
+<div class="dropdown btn-group" id="filtros">  
+  <div>
+  <label>Rango de precios</label>
+  <input placeholder="Precio minimo" type="number" name="preciomin" id="preciomin">
+  <input placeholder="Precio maximo" type="number" name="preciomax" id="preciomax">
+  <button class="btn btn-light btn-block" id="rangoDePrecio">Filtrar</button>
+  </div>
+  <div>
+<select id="orderElement" style="display: right">
+  <option selected >Filtro</option>
+  <option id="precioasc">Precio ascendente</option>
+  <option id="preciodesc">Precio descendente</option>
+  <option id="relevancia">Mas relevante primero</option>
+</select>
+</div>  
+</div>
+
+  <div id="productos" class="row col-mb-3 mb-4">
+  </div>
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">

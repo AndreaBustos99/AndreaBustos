@@ -188,3 +188,14 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+#usuario {
+  color: aliceblue;
+}
+
+#filtros{
+  margin-top: 2%;
+  margin-right: 2%;
+  display: flex;
+  flex-direction: row-reverse;
+}

@@ -40,6 +40,13 @@ function setCatID(id) {
     window.location = "products.html"
 }
 
+function guardarCatID(){
+    document.addEventListener('click', function setCatID(){
+    } );
+}
+
+
+
 function showCategoriesList(){
 
     let htmlContentToAppend = "";
@@ -141,3 +148,6 @@ document.addEventListener("DOMContentLoaded", function(e){
         showCategoriesList();
     });
 });
+
+    let usuario = localStorage.getItem('usuario');
+    document.getElementById("navbarNav").innerHTML += `<h5 id="usuario">${usuario}</h5>`;

@@ -8,12 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
     formulario.addEventListener('submit', (evento) => {
         evento.preventDefault();
 
-    const inputs = formulario.querySelectorAll('input');
-
+    let password = document.getElementById("contrasena")
+    let email = document.getElementById("email")
+    let inputs = document.querySelectorAll('input')
     let vacio = false;
+    document.getElementsByClassName(".navbar navbar-expand-lg navbar-dark bg-dark p-1").innerHTML = "";
 
     inputs.forEach((input) => {
-        if(input.value == '') {
+        if(password.value == ''|| email.value == '') {
             vacio = true;
         };
     
@@ -21,14 +23,14 @@ document.addEventListener('DOMContentLoaded', () => {
         showAlertError();
         formulario.reset();
     } else{
-        window.location="home.html"
-     
+        let usuario = document.querySelector("#email").value;
+        localStorage.setItem("usuario", usuario);
+        window.location="home.html";
+        
     }
-
-    
-    
+    })
     })
 
-    })
+
 });
 
