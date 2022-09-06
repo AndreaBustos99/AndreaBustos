@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         showAlertError();
         formulario.reset();
     } else{
-        let usuario = document.querySelector("#email").value;
+        let usuario = document.getElementById("email").value;
         localStorage.setItem("usuario", usuario);
         window.location="home.html";
         
