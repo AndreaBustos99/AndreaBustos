@@ -40,10 +40,10 @@ function setCatID(id) {
     window.location = "products.html"
 }
 
-function guardarCatID(){
-    document.addEventListener('click', function setCatID(){
-    } );
-}
+//function guardarCatID(){
+  //  document.addEventListener('click', function setCatID(){
+    //} );
+//}
 
 
 

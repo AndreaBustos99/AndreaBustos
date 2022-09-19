@@ -36,6 +36,30 @@
       </div>
     </div>
   </nav>
+  
+<!-- divs para insertar la informacion desde js-->
+  <div id="productInfo" >
+  </div>
+  <div id="productImg" class="box" >
+  </div>
+  <div id="comentarios" >
+  </div>
+  <div id="comentar" >
+    <div class="container col-mb-3">
+    <h5>Comentar</h5>
+    <label>Tu opinión:</label>
+    <input style="width: 350pxpx; height: 100px" size="30" placeholder="Escribe aquí." type="text" name="comentario" id="comentarioAgregado">
+    <select id="calificacion" style="display: right">
+      <option selected >1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+    <button class="btn btn-light btn-block" id="agregarComentario" style="background-color:#0087F7;" onclick="verFecha()">Enviar</button>
+  </div>
+  </div>
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">

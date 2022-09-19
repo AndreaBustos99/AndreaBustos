@@ -199,3 +199,30 @@ a.custom-card:hover {
   display: flex;
   flex-direction: row-reverse;
 }
+
+#productInfo {
+  margin: 2%;
+}
+
+
+#productImg {
+  margin: 2%;
+  display: flex;
+  width: 700px;
+}
+
+#comentarios { 
+  margin: 2%;
+}
+
+#estrella {
+  height: auto;
+  width: auto;
+  margin: 2px;
+  padding: 2px;
+}
+#estrellas {
+  height: auto;
+  width: auto;
+  margin-left: 5px;
+}

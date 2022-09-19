@@ -1,49 +1,59 @@
 let usuario = localStorage.getItem('usuario');
 document.getElementById("navbarNav").innerHTML += `<h5 id="usuario">${usuario}</h5>`;
-let autoLista;
-let productosFiltrados;
-let datos;
+let listaDeProductos;
+let datosCategorias;
+let datosProductos;
+let catSeleccionada;
+const URLCategorias = `https://japceibal.github.io/emercado-api/cats/cat.json`
+let URLProductos = `https://japceibal.github.io/emercado-api/cats_products/${catSeleccionada}.json`
 
-async function getData() {
-    let respuesta = await fetch('https://japceibal.github.io/emercado-api/cats_products/101.json');
+async function getData(URL) {
+    let respuesta = await fetch(URL);
     let informacion = await respuesta.json();
+    console.log(informacion)
     return informacion;
 }
 
 
-function showProducts(productosFiltrados) {
+function showProducts(listaDeProductos) {
     productos.innerHTML = " "
-    let catID = localStorage.getItem('catID')
-    console.log(catID)
-    console.log(datos.catID)
-    let catSeleccionada = datos.catID
-    if (catID == catSeleccionada) {
-    productosFiltrados.forEach(auto => {
+    listaDeProductos.forEach(product => {
         productos.innerHTML += `
-        <div class="card" style="width: 18rem; margin: 20px;">
-        <img src=${auto.image} class="card-img-top" alt="...">
-        <div class="card-body"><h5 class="card-title">${auto.name}</h5>
-        <p class="card-text">${auto.description}</p>
+        <div onclick="setProdID(${product.id})" id=${product.id} class="card" style="width: 18rem; margin: 20px;">
+        <img src=${product.image} class="card-img-top" alt="...">
+        <div class="card-body"><h5 class="card-title">${product.name}</h5>
+        <p class="card-text">${product.description}</p>
         </div><ul class="list-group list-group-flush">
-        <li class="list-group-item">${auto.currency} ${auto.cost}</li>
-        <li class="list-group-item">${auto.soldCount}</li>
+        <li class="list-group-item">${product.currency} ${product.cost}</li>
+        <li class="list-group-item">${product.soldCount}</li>
         </ul>
         </div>
         `;
     });
 }
-}
 
 function showProductsFiltered(preciomin, preciomax) {
-    productosFiltrados = autoLista.filter(auto => auto.cost >= preciomin && auto.cost <= preciomax);
-    showProducts(productosFiltrados);
+    listaDeProductos = listaDeProductos.filter(product => product.cost >= preciomin && product.cost <= preciomax);
+    showProducts(listaDeProductos);
 
 }
 
 document.addEventListener('DOMContentLoaded', async function () {
-    datos = await getData();
-    autoLista = datos.products;
-    showProducts(autoLista);
+    catSeleccionada = "";
+    let catID = localStorage.getItem('catID')
+    datosCategorias = await getData(URLCategorias);
+    for (let i = 0; i < datosCategorias.length; i++) {
+        if (datosCategorias[i].id = catID) {
+            catSeleccionada = catID;
+            console.log(catSeleccionada);
+        }
+    }
+    console.log(catSeleccionada);
+    let URLProductos = `https://japceibal.github.io/emercado-api/cats_products/${catSeleccionada}.json`;
+    datosProductos = await getData(URLProductos)
+    listaDeProductos = datosProductos.products;
+    console.log(listaDeProductos);
+    showProducts(listaDeProductos);
 });
 
 document.getElementById("rangoDePrecio").addEventListener("click", function () {
@@ -54,18 +64,18 @@ document.getElementById("rangoDePrecio").addEventListener("click", function () {
 
 document.getElementById("orderElement").addEventListener("change", function (event) {
     let orderSelected = event.target.value
-    if (orderSelected == "Precio ascendente"){
+    if (orderSelected == "Precio ascendente") {
         orderAsc();
-    } if (orderSelected == "Precio descendente"){
+    } if (orderSelected == "Precio descendente") {
         orderDesc();
-    } if (orderSelected == "Mas relevante primero"){
+    } if (orderSelected == "Mas relevante primero") {
         orderRelev();
     }
-    showProducts(autoLista);
+    showProducts(listaDeProductos);
 });
 
 function orderAsc() {
-    autoLista = autoLista.sort(function (a, b) {
+    listaDeProductos = listaDeProductos.sort(function (a, b) {
         if (a.cost < b.cost) {
             return -1;
         }
@@ -80,7 +90,7 @@ function orderAsc() {
 }
 
 function orderDesc() {
-    autoLista = autoLista.sort(function (a, b) {
+    listaDeProductos = listaDeProductos.sort(function (a, b) {
         if (a.cost > b.cost) {
             return -1;
         }
@@ -95,7 +105,7 @@ function orderDesc() {
 }
 
 function orderRelev() {
-    autoLista = autoLista.sort(function (a, b) {
+    listaDeProductos = listaDeProductos.sort(function (a, b) {
         if (a.soldCount > b.soldCount) {
             return -1;
         }
@@ -109,4 +119,10 @@ function orderRelev() {
     )
 }
 
+
+//funcion para guardar el id del producto en el localstorage
+function setProdID(id) {
+    localStorage.setItem("ProdID", id);
+    window.location = "product-info.html";
+}
 
