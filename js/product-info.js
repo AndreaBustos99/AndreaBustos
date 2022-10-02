@@ -1,5 +1,20 @@
 let usuario = localStorage.getItem('usuario');
-document.getElementById("navbarNav").innerHTML += `<h5 id="usuario">${usuario}</h5>`;
+document.getElementById("navbarNav").innerHTML +=`<div class="dropdown">
+<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+${usuario}
+</button>
+<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+  <li><a class="dropdown-item" href="/Proyecto-JaP/Workspace inicial/cart.html">Mi carrito</a></li>
+  <li><a class="dropdown-item" href="/Proyecto-JaP/Workspace inicial/my-profile.html">Mi perfil</a></li>
+  <li><a class="dropdown-item" href="/Proyecto-JaP/Workspace inicial/index.html" onclick="eliminarUsuario()">Cerrar sesión</a></li>
+</ul>
+</div>>`
+
+function eliminarUsuario(){
+    localStorage.removeItem('usuario');
+}
+
+
 let productID;
 let producto;
 let infoProducto;
@@ -42,7 +57,24 @@ document.addEventListener('DOMContentLoaded', async function () {
     });
     productInfo.innerHTML += `</div>`
 
+// Trae lo productos relacionados 
+    let productosRelacionados= infoProducto.relatedProducts;
+    prodRelacionados.innerHTML="";
+    productosRelacionados.forEach(product => {
+        prodRelacionados.innerHTML += `
+        <div onclick="setProdID(${product.id})" id=${product.id} class="card" style="width: 18rem; margin: 20px;">
+        <img src=${product.image} class="card-img-top" alt="...">
+        <div class="card-body"><h5 class="card-title">${product.name}</h5>
+        </div>
+        </div>
+        `;
+    });      
 });
+
+function setProdID(id) {
+    localStorage.setItem("ProdID", id);
+    window.location = "product-info.html";
+}
 
 //Trae los comentarios y calificacion del producto
 document.addEventListener('DOMContentLoaded', async function () {
