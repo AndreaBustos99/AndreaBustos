@@ -4,9 +4,9 @@ document.getElementById("navbarNav").innerHTML +=`<div class="dropdown">
 ${usuario}
 </button>
 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-  <li><a class="dropdown-item" href="/Proyecto-JaP/Workspace inicial/cart.html">Mi carrito</a></li>
-  <li><a class="dropdown-item" href="/Proyecto-JaP/Workspace inicial/my-profile.html">Mi perfil</a></li>
-  <li><a class="dropdown-item" href="/Proyecto-JaP/Workspace inicial/index.html" onclick="eliminarUsuario()">Cerrar sesión</a></li>
+  <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
+  <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+  <li><a class="dropdown-item" href="index.html" onclick="eliminarUsuario()">Cerrar sesión</a></li>
 </ul>
 </div>>`
 

@@ -35,13 +35,54 @@
       </div>
     </div>
   </nav>
-  <main>
+  <!--  <main>
     <div class="container">
       <div class="alert alert-danger text-center" role="alert">
         <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
       </div>
     </div>
-  </main>
+  </main>-->
+
+  <!--Div para insertar el contenido-->
+  <div class="container" id="carrito">
+    <h1 style="display: flex; justify-content:center;">Carrito de compras</h1>
+    <h3>Articulos a comprar</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Costo</th>
+          <th scope="col">Cantidad</th>
+          <th scope="col">Subtotal</th>
+        </tr>
+      </thead>
+      <tbody id="productosDeCarrito">
+
+      </tbody>
+    </table>
+
+  </div>
+ <!--Informacion de envio-->
+  <div class="container" id="infoEnvio">
+    <h3>Tipo de envío</h3>
+    <input type="radio" name="tipoDeEnvio" value="1">Premium 2 a 5 días (15%)
+    <br>
+    <input type="radio" name="tipoDeEnvio" value="2">Express 5 a 8 días (7%)
+    <br>
+    <input type="radio" name="tipoDeEnvio" value="3">Standar 12 a 15 días (5%)
+    <br>
+    <br>
+    <h3>Dirección de envío</h3>
+    <label>Calle</label>
+    <input id="calle" type="text">
+    <label>Número</label>
+    <input id="numero" type="text">
+    <br>
+    <label>Esquina</label>
+    <input id="esquina" type="text">
+  </div>
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
