@@ -5,13 +5,21 @@ ${usuario}
 </button>
 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
   <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
-  <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+  <li><a class="dropdown-item" onclick="validarExistenciaDeUsuario()">Mi perfil</a></li>
   <li><a class="dropdown-item" href="index.html" onclick="eliminarUsuario()">Cerrar sesión</a></li>
 </ul>
 </div>>`
 
 function eliminarUsuario(){
-    localStorage.removeItem('usuario');
+    localStorage.clear();
+}
+
+function validarExistenciaDeUsuario(){
+    if (usuario === null){
+    window.location="index.html";
+  } else { 
+    window.location="my-profile.html";
+  }
 }
 
 

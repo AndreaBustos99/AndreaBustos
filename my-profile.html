@@ -50,13 +50,34 @@
       </div>
     </div>
   </nav>
-  <main>
+  <div style="margin: 5%;">
+    <h3>Dirección de envío</h3>
+    <div class="col-md-6 mb-3" style="text-justify: center;">
+      <form class="needs-validation" id="infoDeUsuario" novalidate>
+        <label for="primerNombre" class="form-label ">Primer nombre. *</label>
+        <input id="primerNombre" type="text" class="form-control" name="primerNombre" required>
+        <label for="segundoNombre" class="form-label">Segundo nombre.</label>
+        <input id="segundoNombre" class="form-control" type="text" name="segundoNombre">
+        <label for="apellido" class="form-label ">Apellido. *</label>
+        <input id="primerApellido" type="text" class="form-control" name="apellido" required>
+        <label for="segundoApellido" class="form-label">Segundo apellido.</label>
+        <input id="segundoApellido" class="form-control" type="text" name="segundoApellido">
+        <label for="email" class="form-label ">E-mail. *</label>
+        <input id="email" type="email" class="form-control" name="email" required>
+        <label for="telefono" class="form-label">Teléfono de contacto.</label>
+        <input id="telefono" class="form-control" type="text" name="telefono">
+        <br>
+        <button class="btn btn-primary" type="submit" id="guardarCambios">Guardar cambios</button>
+      </form>
+    </div>
+  </div>
+  <!--  <main>
     <div class="container">
       <div class="alert alert-danger text-center" role="alert">
         <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
       </div>
     </div>
-  </main>
+  </main> -->
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">

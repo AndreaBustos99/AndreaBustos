@@ -20,20 +20,30 @@ const forms = document.querySelectorAll('.needs-validation')
 
 
 //Agrego el usuario a la navbar
+
 let usuario = localStorage.getItem('usuario');
-document.getElementById("navbarNav").innerHTML += `<div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-    ${usuario}
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+document.getElementById("navbarNav").innerHTML +=`<div class="dropdown">
+<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+${usuario}
+</button>
+<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
   <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
-  <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+  <li><a class="dropdown-item" onclick="validarExistenciaDeUsuario()">Mi perfil</a></li>
   <li><a class="dropdown-item" href="index.html" onclick="eliminarUsuario()">Cerrar sesión</a></li>
 </ul>
-    </div>>`
+</div>>`
 
-function eliminarUsuario() {
-  localStorage.removeItem('usuario');
+function eliminarUsuario(){
+  localStorage.clear();
+
+}
+
+function validarExistenciaDeUsuario(){
+  if (usuario === null){
+    window.location="index.html";
+  } else { 
+    window.location="my-profile.html";
+  }
 }
 
 async function getData(URL) {
@@ -152,7 +162,6 @@ document.getElementById("infoDeCompra").addEventListener("submit", function (e) 
   btnSeleccionar = document.getElementById("btnSeleccionar");
 
 
-
   //Quito las clases que marcan como inválidos
   calleInput.classList.remove('is-invalid');
   numeroInput.classList.remove('is-invalid');
@@ -205,12 +214,12 @@ document.getElementById("infoDeCompra").addEventListener("submit", function (e) 
 
 
   //Si se verifican todas las condiciones anteriores, se culmina la compra
-if(document.getElementById("infoDeCompra").checkValidity() && document.getElementById("metodosDePagoForm").checkValidity()){
-showAlertSuccess();
-alert_mediodepago.innerHTML = '';
+  if(document.getElementById("infoDeCompra").checkValidity() && document.getElementById("metodosDePagoForm").checkValidity()){
+    showAlertSuccess();
+    alert_mediodepago.innerHTML = '';
     btnSeleccionar.classList.remove('text-danger')
-//verificacionMetodosDePago()
-document.getElementById("infoDeCompra").reset();
-document.getElementById("metodosDePagoForm").reset();
-}
+  //verificacionMetodosDePago()
+  document.getElementById("infoDeCompra").reset();
+  document.getElementById("metodosDePagoForm").reset();
+  }
 });
